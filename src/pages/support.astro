@@ -1,4 +1,5 @@
 ---
+import { u } from '../utils/url';
 import MainLayout from '../layouts/MainLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import FAQ from '../components/FAQ.astro';
@@ -30,7 +31,7 @@ const fixes = [
   <section class="section" id="where"><div class="container narrow">
     <h2>Where to find help</h2>
     <p>This page covers the most common questions. Inside the app, <strong>Reminder health</strong> (from Home, Notifications, or Profile) checks whether this phone is ready to deliver your next reminder and links to the relevant settings.</p>
-    <p>For how your data is handled, see the <a href="/privacy-policy">Privacy Policy</a>.</p>
+    <p>For how your data is handled, see the <a href={u("/privacy-policy/")}>Privacy Policy</a>.</p>
   </div></section>
 
   <section class="section alt" id="faq"><div class="container narrow">
@@ -53,7 +54,7 @@ const fixes = [
   </div></section>
 
   <CTA title="Back to the app." text="NexaCare reminds and keeps a log. It does not give medical advice, dosing advice, or a diagnosis.">
-    <Button href="/" variant="light">Back to home</Button>
+    <Button href={u("/")} variant="light">Back to home</Button>
   </CTA>
 </MainLayout>
 <style>

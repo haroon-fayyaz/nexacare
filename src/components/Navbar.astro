@@ -1,18 +1,19 @@
 ---
+import { u } from '../utils/url';
 import Button from './Button.astro';
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const links = [['/', 'Home'], ['/support', 'Support'], ['/privacy-policy', 'Privacy Policy']];
+const path = Astro.url.pathname;
+const links = [[u('/'), 'Home'], [u('/support/'), 'Support'], [u('/privacy-policy/'), 'Privacy Policy']];
 ---
 <header class="nav">
   <div class="container bar">
-    <a href="/" class="brand" aria-label="NexaCare home">
-      <img src="/favicon.svg" width="32" height="32" alt="" />NexaCare
+    <a href={u("/")} class="brand" aria-label="NexaCare home">
+      <img src={u("/favicon.svg")} width="32" height="32" alt="" />NexaCare
     </a>
     <input type="checkbox" id="menu" class="toggle" aria-label="Toggle menu" />
     <label for="menu" class="burger" aria-hidden="true"><span></span><span></span><span></span></label>
     <nav class="menu" aria-label="Main">
       {links.map(([h, l]) => <a href={h} aria-current={path === h ? 'page' : undefined}>{l}</a>)}
-      <Button href="/#features">Explore app</Button>
+      <Button href={u("/#features")}>Explore app</Button>
     </nav>
   </div>
 </header>

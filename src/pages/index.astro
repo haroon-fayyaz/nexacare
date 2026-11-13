@@ -1,4 +1,5 @@
 ---
+import { u } from '../utils/url';
 import MainLayout from '../layouts/MainLayout.astro';
 import Button from '../components/Button.astro';
 import FeatureCard from '../components/FeatureCard.astro';
@@ -37,7 +38,7 @@ const benefits = [
         <p class="lead">NexaCare keeps a reminder on screen until you mark it taken, skipped, or snoozed, and shows you whether your phone is ready to deliver the next one.</p>
         <div class="actions">
           <Button href="#features">Explore features</Button>
-          <Button href="/support" variant="secondary">Get help</Button>
+          <Button href={u("/support/")} variant="secondary">Get help</Button>
         </div>
         <p class="note">Your medication list stays on your phone.</p>
       </div>
@@ -79,7 +80,7 @@ const benefits = [
   </section>
 
   <CTA title="A calmer way to stay on schedule." text="NexaCare reminds and keeps a log. It does not give medical advice, dosing advice, or a diagnosis." >
-    <Button href="/support" variant="light">Read the support guide</Button>
+    <Button href={u("/support/")} variant="light">Read the support guide</Button>
   </CTA>
 </MainLayout>
 <style>

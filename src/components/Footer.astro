@@ -1,14 +1,15 @@
 ---
+import { u } from '../utils/url';
 const year = new Date().getFullYear();
 ---
 <footer>
   <div class="container grid">
     <div>
-      <a href="/" class="brand"><img src="/favicon.svg" width="32" height="32" alt="" />NexaCare</a>
+      <a href={u("/")} class="brand"><img src={u("/favicon.svg")} width="32" height="32" alt="" />NexaCare</a>
       <p>A calm medication reminder for Android. Reminders stay until you mark the dose. Your medication list stays on your phone.</p>
     </div>
     <nav aria-label="Footer">
-      <a href="/">Home</a><a href="/support">Support</a><a href="/privacy-policy">Privacy Policy</a>
+      <a href={u("/")}>Home</a><a href={u("/support/")}>Support</a><a href={u("/privacy-policy/")}>Privacy Policy</a>
     </nav>
   </div>
   <div class="container fine">

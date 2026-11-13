@@ -1,10 +1,11 @@
 ---
+import { u } from '../utils/url';
 import Button from './Button.astro';
 const { title, text } = Astro.props;
 ---
 <section class="section"><div class="container"><div class="cta">
   <h2>{title}</h2><p>{text}</p>
-  <slot><Button href="/support" variant="light">Read the support guide</Button></slot>
+  <slot><Button href={u("/support/")} variant="light">Read the support guide</Button></slot>
 </div></div></section>
 <style>
 .cta{background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:var(--r-lg);padding:clamp(36px,7vw,72px) 24px;text-align:center;box-shadow:var(--shadow-lg)}

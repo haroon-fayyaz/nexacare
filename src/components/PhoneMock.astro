@@ -1,9 +1,10 @@
 ---
+import { u } from '../utils/url';
 // Illustrative recreation of the Home screen UI (no real user data).
 ---
 <div class="phone" role="img" aria-label="Illustration of the NexaCare Home screen showing today's progress and a list of doses">
   <div class="screen">
-    <div class="top"><span class="logo"><img src="/favicon.svg" width="20" height="20" alt="" />NexaCare</span><span class="bell"></span></div>
+    <div class="top"><span class="logo"><img src={u("/favicon.svg")} width="20" height="20" alt="" />NexaCare</span><span class="bell"></span></div>
     <h4>Good morning</h4>
     <p class="sub">You're on track today.</p>
     <div class="prog"><div class="ring"><b>2</b><small>/ 3</small></div><div><strong>Today's progress</strong><span>2 of 3 doses completed</span></div></div>
