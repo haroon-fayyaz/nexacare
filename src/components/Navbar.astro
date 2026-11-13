@@ -1,0 +1,42 @@
+---
+import Button from './Button.astro';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [['/', 'Home'], ['/support', 'Support'], ['/privacy-policy', 'Privacy Policy']];
+---
+<header class="nav">
+  <div class="container bar">
+    <a href="/" class="brand" aria-label="NexaCare home">
+      <img src="/favicon.svg" width="32" height="32" alt="" />NexaCare
+    </a>
+    <input type="checkbox" id="menu" class="toggle" aria-label="Toggle menu" />
+    <label for="menu" class="burger" aria-hidden="true"><span></span><span></span><span></span></label>
+    <nav class="menu" aria-label="Main">
+      {links.map(([h, l]) => <a href={h} aria-current={path === h ? 'page' : undefined}>{l}</a>)}
+      <Button href="/#features">Explore app</Button>
+    </nav>
+  </div>
+</header>
+<style>
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,246,239,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:68px;position:relative}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.2rem;color:var(--green-dark);text-decoration:none;letter-spacing:-.02em}
+.menu{display:flex;align-items:center;gap:6px}
+.menu a:not(.btn){padding:10px 14px;border-radius:99px;text-decoration:none;color:var(--text-2);font-weight:500;font-size:.98rem}
+.menu a:not(.btn):hover{background:var(--pistachio);color:var(--green-dark)}
+.menu a[aria-current=page]{color:var(--green-dark);background:var(--pistachio)}
+.menu :global(.btn){margin-left:8px;min-height:42px}
+.toggle,.burger{display:none}
+@media(max-width:760px){
+  .burger{display:flex;flex-direction:column;gap:5px;padding:14px;cursor:pointer;min-width:48px;min-height:48px;justify-content:center}
+  .burger span{width:22px;height:2px;background:var(--green-dark);border-radius:2px;transition:.2s}
+  .toggle{display:block;position:absolute;right:0;width:48px;height:48px;opacity:0;cursor:pointer;z-index:2;margin:0}
+  .toggle:focus-visible+.burger{outline:3px solid var(--green);border-radius:8px}
+  .menu{display:none;position:absolute;top:68px;left:-20px;right:-20px;flex-direction:column;align-items:stretch;background:var(--ivory);padding:12px 20px 20px;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+  .toggle:checked~.menu{display:flex}
+  .menu a:not(.btn){padding:14px;font-size:1.05rem}
+  .menu :global(.btn){margin:8px 0 0}
+  .toggle:checked+.burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .toggle:checked+.burger span:nth-child(2){opacity:0}
+  .toggle:checked+.burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+</style>

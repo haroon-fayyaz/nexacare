@@ -1,0 +1,60 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+const toc = [
+  ['intro', 'Introduction'], ['collect', 'Information We Collect'], ['personal', 'Personal Information'], ['auto', 'Automatically Collected Information'],
+  ['use', 'How We Use Information'], ['security', 'Data Storage and Security'], ['cookies', 'Cookies and Tracking Technologies'],
+  ['third', 'Third-Party Services'], ['sharing', 'Data Sharing'], ['retention', 'Data Retention'], ['rights', 'User Privacy Rights'],
+  ['intl', 'International Data Transfers'], ['changes', 'Changes to This Policy'],
+];
+---
+<MainLayout title="Privacy Policy" description="How NexaCare handles your information: medication data stays on your phone, and sharing happens only when you turn it on.">
+  <PageHeader eyebrow="Legal" title="Privacy Policy" lead="Last updated: November 13, 2026" />
+  <div class="container wrap">
+    <nav class="toc" aria-label="Table of contents"><h2>Contents</h2><ol>{toc.map(([id, t]) => <li><a href={`#${id}`}>{t}</a></li>)}</ol></nav>
+    <article class="doc">
+      <section id="intro"><h2>1. Introduction</h2>
+        <p>This policy explains how NexaCare ("the app") handles information. NexaCare is published by TactileLogic. The app reminds you about doses you enter and keeps a log. It does not give medical advice, dosing advice, or a diagnosis.</p></section>
+      <section id="collect"><h2>2. Information We Collect</h2>
+        <p>By default, the information you enter stays on your phone and is not collected by us. Some information is sent off the phone only if you turn on optional features, described below.</p></section>
+      <section id="personal"><h2>3. Personal Information</h2>
+        <h3>Stored on your phone</h3>
+        <p>Medication names, strength, form, optional photo, color, schedules, dose history, skip reasons, notes, and reminder settings are stored in an encrypted database on the phone. Android backup and device transfer exclude that database and its key.</p>
+        <h3>Shared only when you turn it on</h3>
+        <p>If you create a caregiver link, the app can send that person a narrow update: that a dose window was missed, taken, or skipped, and only the fields you enable. Medication names are omitted unless you turn name sharing on. A "taken late" message is sent only if you enable it. Invite codes, sharing switches, dose-window times, confirmation kinds, and an optional display name make up the caregiver data. Skip reasons, notes, and your full medication list are not uploaded. You can revoke a caregiver at any time.</p></section>
+      <section id="auto"><h2>4. Automatically Collected Information</h2>
+        <p>To deliver caregiver updates, the phone signs in anonymously, and an anonymous account identifier and a push-notification token are used. This applies only if you use caregiver alerts. Analytics and crash reports are off until you enable them (see Cookies and Tracking Technologies). Advertising ID collection is off.</p></section>
+      <section id="use"><h2>5. How We Use Information</h2>
+        <p>Information is used only to provide app functionality: scheduling reminders, showing history, delivering caregiver updates you set up, and, if you opt in, understanding app usage and stability.</p></section>
+      <section id="security"><h2>6. Data Storage and Security</h2>
+        <p>Your medication data is stored in an encrypted database on your phone. Exports (CSV, PDF, backup) are written only when you choose a destination and contain your medication names. A backup can be encrypted with a passphrase you type. Keep your passphrase safe. No method of storage or transmission is completely secure.</p></section>
+      <section id="cookies"><h2>7. Cookies and Tracking Technologies</h2>
+        <p>This website does not use cookies or tracking scripts. In the app, analytics and crash reports are optional and off until you enable them in Settings. Analytics events use fixed names and do not include medication names, notes, dose times, caregiver names, or message text. Crash reports use the same limit.</p></section>
+      <section id="third"><h2>8. Third-Party Services</h2>
+        <p>The global build uses Firebase for caregiver delivery, and, if you opt in, for analytics (Firebase Analytics) and crash reporting (Firebase Crashlytics). The China build does not include Firebase, so caregiver alerts, analytics, and crash reporting are unavailable there. Reminders still run on the phone.</p></section>
+      <section id="sharing"><h2>9. Data Sharing</h2>
+        <p>We do not sell your information. Caregiver updates are shared with the person you link, only as you configure. Information is processed by Firebase only as described above.</p></section>
+      <section id="retention"><h2>10. Data Retention</h2>
+        <p>Data on your phone stays until you remove it. Uninstalling the app, or using <strong>Delete everything</strong> in Settings, removes it.</p></section>
+      <section id="rights"><h2>11. User Privacy Rights</h2>
+        <p>You control your data in the app: you can export it, delete it, turn off caregiver sharing, revoke caregivers, and turn analytics and crash reports on or off. Rights available under laws that apply to you, and how to exercise them for data held off your phone.</p></section>
+      <section id="intl"><h2>12. International Data Transfers</h2>
+        <p>Data stored on your phone is not transferred. Data processed by Firebase for opted-in features may be processed in other countries.</p></section>
+      <section id="changes"><h2>13. Changes to This Policy</h2>
+        <p>We may update this policy. The "Last updated" date above shows the latest revision.</p></section>
+    </article>
+  </div>
+</MainLayout>
+<style>
+.wrap{max-width:820px;padding-bottom:96px}
+.draft{background:var(--up-bg);color:var(--up);border-radius:var(--r);padding:16px 20px;margin-bottom:28px;font-size:.98rem}
+.toc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px 26px;margin-bottom:40px}
+.toc h2{font-size:1.1rem;margin-bottom:.6em}
+.toc ol{margin:0;padding-left:1.4em;columns:2;column-gap:32px}
+.toc li{break-inside:avoid;padding:3px 0}
+.doc section{scroll-margin-top:84px;margin-bottom:36px}
+.doc h2{font-size:1.5rem}
+.doc h3{margin-top:1.2em}
+.doc p{color:var(--text-2);max-width:68ch}
+@media(max-width:620px){.toc ol{columns:1}}
+</style>

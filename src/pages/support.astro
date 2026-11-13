@@ -1,0 +1,69 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import Button from '../components/Button.astro';
+const faqs = [
+  { q: 'How long does a reminder stay on screen?', a: 'A reminder stays until you mark the dose taken, skipped, or snoozed.' },
+  { q: 'What does the "Reminders need a quick check" banner mean?', a: 'It appears on Home when this phone may not deliver reminders on time, for example when notification permission or exact alarms are restricted. Tap it to open <strong>Reminder health</strong>, which shows what to fix.' },
+  { q: 'Can I take a dose later than scheduled?', a: 'Yes. A dose recorded after its window is shown as <strong>Taken late</strong>. You can also snooze a reminder.' },
+  { q: 'What schedules are supported?', a: 'Daily times, selected weekdays, every few days, and on/off weeks, with optional start and end dates. As-needed doses are supported as well.' },
+  { q: 'Does NexaCare check for interactions?', a: 'It can flag some common, well-known interactions and duplicates as general information. The list is small, so no warning does not mean a combination is safe. It is not medical advice. Ask your pharmacist or clinician.' },
+  { q: 'How do I export my history or back it up?', a: 'Export a CSV or PDF, or save a backup, from the app. Files are written only where you choose. A backup can be encrypted with a passphrase you type. Keep that passphrase safe.' },
+  { q: 'How do I delete my data?', a: 'Use <strong>Delete everything</strong> in Settings, or uninstall the app. Your medication data is stored on the phone.' },
+  { q: 'What does caregiver sharing send?', a: 'Only if you create a caregiver link: that a dose window was missed, taken, or skipped, and only the fields you enable. Medication names are off by default. You can revoke a caregiver at any time.' },
+  { q: 'Is analytics on?', a: 'No. Analytics and crash reports are off until you enable them in Settings.' },
+];
+const fixes = [
+  ['Reminders arrive late or not at all', 'Open Reminder health from Home, Notifications, or Profile and follow its suggestions. Check that notifications are allowed for NexaCare, and that alarms are allowed on this phone.'],
+  ['Phone battery settings', 'Some phones restrict background apps. If reminders are delayed, review battery optimization for NexaCare in your phone settings.'],
+  ['After restarting or changing time zone', 'Open the app once and check Home and Schedule to confirm your upcoming doses look right.'],
+  ['Data missing on a new phone', 'The medication database is excluded from Android backup and device transfer by design. Restore from a backup file you exported yourself.'],
+];
+---
+<MainLayout title="Support" description="Help for NexaCare: frequently asked questions, troubleshooting reminders, and tips for using the app.">
+  <PageHeader eyebrow="Support" title="How can we help?" lead="Find answers about reminders, schedules, exports, and privacy below. Most things can be fixed from inside the app.">
+    <nav class="jump" aria-label="On this page"><Button href="#faq" variant="secondary">FAQ</Button><Button href="#troubleshooting" variant="secondary">Troubleshooting</Button><Button href="#tips" variant="secondary">Tips</Button></nav>
+  </PageHeader>
+
+  <section class="section" id="where"><div class="container narrow">
+    <h2>Where to find help</h2>
+    <p>This page covers the most common questions. Inside the app, <strong>Reminder health</strong> (from Home, Notifications, or Profile) checks whether this phone is ready to deliver your next reminder and links to the relevant settings.</p>
+    <p>For how your data is handled, see the <a href="/privacy-policy">Privacy Policy</a>.</p>
+  </div></section>
+
+  <section class="section alt" id="faq"><div class="container narrow">
+    <h2>Frequently asked questions</h2><FAQ items={faqs} />
+  </div></section>
+
+  <section class="section" id="troubleshooting"><div class="container narrow">
+    <h2>Troubleshooting</h2>
+    <div class="tl">{fixes.map(([t, d]) => <div><h3>{t}</h3><p>{d}</p></div>)}</div>
+  </div></section>
+
+  <section class="section alt" id="tips"><div class="container narrow">
+    <h2>Tips</h2>
+    <ul class="tips">
+      <li>Scan a label when adding a medication to pre-fill the form, then double-check what it filled in.</li>
+      <li>Add the home screen widget to see today's doses without opening the app.</li>
+      <li>Set a start and end date for short courses so reminders stop on time.</li>
+      <li>Use the History tab to prepare for appointments. It shows counts, not a score.</li>
+    </ul>
+  </div></section>
+
+  <CTA title="Back to the app." text="NexaCare reminds and keeps a log. It does not give medical advice, dosing advice, or a diagnosis.">
+    <Button href="/" variant="light">Back to home</Button>
+  </CTA>
+</MainLayout>
+<style>
+.narrow{max-width:800px}
+.alt{background:var(--pistachio)}
+.jump{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.tl{display:grid;gap:14px}
+.tl div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.tl p{margin:0;color:var(--text-2)}
+.tips{padding-left:1.2em;display:grid;gap:10px}
+:target{scroll-margin-top:84px}
+.section{scroll-margin-top:68px}
+</style>
